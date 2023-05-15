@@ -10,14 +10,6 @@ font-weight:lighter;
 text-align:left;
 color:#FFFFFF;
 }
-header{
-	height: 3em;
-	position: fixed;
-	width: 100%;
-	top: 0;
-	left: 0;
-	z-index: 10;
-}
 #clock{
  float:right;
  margin-right:2.25%;
