@@ -10,25 +10,6 @@ font-weight:lighter;
 text-align:left;
 color:#FFFFFF;
 }
- button {
-            
-            border: 2px solid black;
-            border-radius: 10px;
-            width: 170px;
-            height: 40px;           
-            text-align: center;
-            padding: 1px;
-            margin: 1px;
-            color: white;
-            box-shadow: 0 5px 20px 0 white;
-            background:rgba(0,0,0,0.5);
-}
-button:hover {
-            box-shadow: 0 5px 50px 0 white;
-            color: white;
-            border-radius: 10px;
-            background-color: #0F0F53;
-}
 header{
 	height: 3em;
 	position: fixed;
