@@ -682,9 +682,11 @@ function kernelExploit() {
    chain.fcall(patch_buffer, p.read8(KERNEL_BASE_PTR));
    chain.fcall(window.syscalls[73], patch_buffer, 0x4000);
    chain.run();
+   localStorage.passcount = ++localStorage.passcount;window.passCounter.innerHTML=localStorage.passcount;
    alert("تم بنجاح شيل الفلاشة وبعدين دوس موافق");
    return; 
   }
+  localStorage.failcount = ++localStorage.failcount;window.failCounter.innerHTML=localStorage.failcount;
   alert("تم تحميل الجولد هين اغلق المتصفح");
   p.write8(0, 0);
   return;
