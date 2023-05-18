@@ -6,6 +6,7 @@
 <link rel="stylesheet prefetch" href="Style.css">
      
 <script>
+	setTimeout(function(){parent.cacheUPDtxt.innerHTML="Cache Installed Successfully.Reopen the Page !!"; }, 1500);localStorage.cached672="yes";};
         window.applicationCache.ondownloading=function(){document.getElementById("progress").innerHTML="host cache start!!";};
         window.applicationCache.onprogress=function(a){document.getElementById("progress").innerHTML=(Math.round(100*(a.loaded/a.total)))+"%";};
         window.applicationCache.oncached=function(){document.getElementById("progress").innerHTML="التخزين المؤقت تم بنجاح";setTimeout(function(){document.getElementById("progress").innerHTML="قم بإيقاف تشغيل الإنترنت وافتح المتصفح مرة أخرى"; }, 1500);};
