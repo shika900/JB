@@ -1,0 +1,85 @@
+<html manifest="shika.cache">
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<head>
+    <title>شيكا ستور</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body 
+        {
+            background-image: url("ps4.png");
+            height: 80%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .loader 
+        {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin: -75px 0 0 -75px;
+            border: 10px solid #1f1e1e;
+            border-radius: 50%;
+            border-top: 10px solid #ffffff;
+            border-left: 10px solid #ffffff;
+            width: 120px;
+            height: 120px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin 
+        {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .info 
+        {
+            overflow: hidden;
+            position: fixed;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+
+            font-size: 45px;
+            font-family: sans-serif;
+            color: #ffffff;
+
+            transform: translate(-50%, -50%);
+        }
+
+        .j {
+            font-size: 25px;
+            color: #ffffff;
+        }
+    </style>
+     
+     <script>
+        window.applicationCache.ondownloading=function(){document.getElementById("progress").innerHTML="host cache start!!";};
+        window.applicationCache.onprogress=function(a){document.getElementById("progress").innerHTML=(Math.round(100*(a.loaded/a.total)))+"%";};
+        window.applicationCache.oncached=function(){document.getElementById("progress").innerHTML="التخزين المؤقت تم بنجاح";setTimeout(function(){document.getElementById("progress").innerHTML="قم بإيقاف تشغيل الإنترنت وافتح المتصفح مرة أخرى"; }, 1500);};
+        window.applicationCache.onnoupdate=function(){setTimeout(webkitExploit,500);};
+	    window.applicationCache.onerror=function(){setTimeout(webkitExploit,500);};
+
+        function allset() 
+        {
+            document.getElementById("loader").style.display = "none";
+            document.getElementById("allset").style.display = "block";
+        }
+    </script>
+    <script src="exploit.js" charset="utf-8" type="text/javascript"></script>
+</head>
+
+<body>
+    <h1 id=progress style='font-size:35px;text-align:center;text-shadow: 4px 4px 4px black;color:rgb(255, 255, 255);'></h1><br>
+    <div id="loader" class="loader"></div>
+    <div id="allset" class="info" style="display:none;">تم اغلق المتصفح</div>
+</body>
+
+</html>
