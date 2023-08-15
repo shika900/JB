@@ -1,3 +1,4 @@
+
 <html manifest="offlinexmb.cache">
 <head>
 <meta charset="utf-8">
@@ -10,10 +11,9 @@ var leaker_obj={a:0};var leaker_arr=new Uint32Array(6);var oob_slave=new Uint8Ar
 <script>
 function DLProgress(e){
 	parent.ScrOverlay.style.display="block";
-        window.applicationCache.ondownloading=function() {
-        document.getElementById("done").innerHTML="Page Caching Started!"
-	parent.cacheUPDtxt.innerHTML==(Math.round(100*(a.loaded/a.total)))+"%"
-	parent.CacheBar.style.width(Math.round(100*(a.loaded/a.total)))+"%"
+	Percent=(Math.round(e.loaded / e.total * 100));
+	parent.cacheUPDtxt.innerHTML="Installing Offline Cache: " + Percent + "%";
+	parent.CacheBar.style.width=(Math.round(100*(a.loaded/a.total)))+"%"
 }
 function DisplayCacheProgress(){
 	setTimeout(function(){parent.cacheUPDtxt.innerHTML="Cache Installed Successfully.Reopen the Page !!"; }, 1500);localStorage.cached672="yes";};
