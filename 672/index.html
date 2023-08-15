@@ -16,7 +16,6 @@ function DLProgress(e){
 }
 function DisplayCacheProgress(){
 	setTimeout(function(){parent.cacheUPDtxt.innerHTML="Cache Installed Successfully.Reopen the Page !!"; }, 1500);localStorage.cached672="yes";};
-	<div id="log">0%</div>
 	window.applicationCache.addEventListener("progress",DLProgress,false);
 	window.applicationCache.oncached=function(e){DisplayCacheProgress();};
 	window.applicationCache.onupdateready=function(e){DisplayCacheProgress();};
