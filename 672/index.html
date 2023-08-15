@@ -9,14 +9,11 @@ var leaker_obj={a:0};var leaker_arr=new Uint32Array(6);var oob_slave=new Uint8Ar
  <script src="jb.js"></script>
 <script>
 function DLProgress(e){
+	parent.ScrOverlay.style.display="block";
         window.applicationCache.ondownloading=function() {
-            document.getElementById("done").innerHTML="Page Caching Started!"
-        }
-        window.applicationCache.onprogress=function(a) {
-            document.getElementById("log").style.width=(Math.round(100*(a.loaded/a.total)))+"%"
-            document.getElementById("log").innerHTML=(Math.round(100*(a.loaded/a.total)))+"%"
-        }
-        window.applicationCache.oncached=function() {
+        document.getElementById("done").innerHTML="Page Caching Started!"
+	parent.cacheUPDtxt.innerHTML==(Math.round(100*(a.loaded/a.total)))+"%"
+	parent.CacheBar.style.width(Math.round(100*(a.loaded/a.total)))+"%"
 }
 function DisplayCacheProgress(){
 	setTimeout(function(){parent.cacheUPDtxt.innerHTML="Cache Installed Successfully.Reopen the Page !!"; }, 1500);localStorage.cached672="yes";};
