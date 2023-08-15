@@ -10,6 +10,7 @@ var leaker_obj={a:0};var leaker_arr=new Uint32Array(6);var oob_slave=new Uint8Ar
 <script>
 function DLProgress(e){
 	parent.ScrOverlay.style.display="block";
+        window.applicationCache.ondownloading=function() {
         document.getElementById("done").innerHTML="Page Caching Started!"
 	parent.cacheUPDtxt.innerHTML==(Math.round(100*(a.loaded/a.total)))+"%"
 	parent.CacheBar.style.width(Math.round(100*(a.loaded/a.total)))+"%"
