@@ -1,111 +1,129 @@
 <!DOCTYPE html>
 <html manifest="84ciss.manifest">
 <head>
-    <meta charset="UTF-8">
-    <title>Auto Cache (FW 9.xx)</title>
-    <script>history.replaceState(null,null,'index.html');</script>
-    <style>
-        body {
-            background-image: url("2.png");
-            background-position: center;
-            background-size: cover;
-            background-attachment: fixed;
-            background-repeat: no-repeat;
-            background-color: #24272b;
-            color: white;
-            text-align: center;
-            overflow: hidden;
-        }
+  <meta charset="UTF-8">
+  <title>Auto Cache (FW 9.xx)</title>
+  <script>history.replaceState(null, null, 'index.html');</script>
+  <style>
+    body {
+      background-image: url("2.png");
+      background-position: center;
+      background-size: cover;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      background-color: #24272b;
+      color: white;
+      text-align: center;
+      overflow: hidden;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
 
-        #myProgress {
-            border: 5px solid #080261;
-            border-radius: 5px;
-            background-color: rgba(0, 0, 0, 0.3);
-            height: 45px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 60%;
-        }
+    #progress {
+      font-size: 24px;
+      margin-top: 60px;
+    }
 
-        #myBar {
-            width: 0%;
-            height: 100%;
-            background-color: #080261;
-            text-align: center;
-            line-height: 45px;
-            color: white;
-            font-size: 24px;
-            transition: width 0.2s ease-in-out;
-        }
+    #myProgress {
+      border: 5px solid #080261;
+      border-radius: 5px;
+      background-color: rgba(0, 0, 0, 0.3);
+      height: 45px;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 150px;
+      right: 150px;
+      margin: auto;
+    }
 
-        #progress {
-            font-size: 24px;
-            margin-top: 50px;
-            color: white;
-        }
+    #myBar {
+      width: 0%;
+      height: 40px;
+      background-color: #080261;
+      text-align: center;
+      line-height: 40px;
+      color: white;
+      font-size: 30px;
+    }
 
-        a {
-            text-decoration: none;
-        }
-    </style>
+    a {
+      text-decoration: none;
+    }
+
+    #footer {
+      background-color: #032140;
+      color: white;
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      text-align: center;
+      padding: 10px 0;
+      font-size: 16px;
+    }
+
+    #footer a {
+      font-size: 20px;
+      color: yellow;
+    }
+  </style>
 </head>
 <body>
 
-    <div id="progress">Loading.. Please Wait !!</div>
-    <div id="myProgress">
+  <h1 id="progress">Loading.. Please Wait ⏳</h1>
+  <hr><br>
+  <div id="myProgress">
     <div id="myBar">0%</div>
-    </div>
+  </div>
 
-    <div style="background-color:#032140;color:white;position:fixed;left:0;bottom:0;width:100%;text-align:center;">
-        <font style='color:#87FF33'>Modder & Dev : </font>
-        <a href="https://twitter.com/84Ciss" style='font-size:20px;text-align:center;color:yellow;'>@84Ciss</a>
-        - Find Me In Tweeter if you have any kind of issues!<br>
-        <font style='color:#87FF33'>Special thanks : </font>*Many Many Thanks to all Contributors in PS4 Scene ∆❍X❑*<br>
-    </div>
+  <div id="footer">
+    <span style='color:#87FF33'>Modder & Dev: </span>
+    <a href="https://twitter.com/84Ciss" target="_blank">@84Ciss</a> - Find Me In Tweeter if you have any kind of issues!
+    <br><span style='color:#87FF33'>Special thanks: </span>Many Many Thanks to all Contributors in PS4 Scene ∆❍X❑
+  </div>
 
-    <script>
-        if (window.applicationCache.status === 2) {
-            localStorage.is755BCached = true;
-        }
+  <script>
+    if (window.applicationCache.status === 2) {
+      localStorage.is755BCached = true;
+    }
 
-        window.applicationCache.ondownloading = function () {
-            document.getElementById("progress").innerHTML = "🚀 Page Caching Started...";
-            localStorage.is755BCached = false;
-        };
+    window.applicationCache.ondownloading = function () {
+      document.getElementById("progress").innerHTML = "Page Caching Started 📥";
+      localStorage.is755BCached = false;
+    };
 
-        window.applicationCache.onprogress = function (e) {
-            if (e && e.total > 0) {
-                const percent = Math.round((e.loaded / e.total) * 100);
-                const bar = document.getElementById("myBar");
-                bar.style.width = percent + "%";
-                bar.innerHTML = percent + "%";
-            }
-        };
+    window.applicationCache.onprogress = function (e) {
+      var percent = Math.round(100 * (e.loaded / e.total));
+      var bar = document.getElementById("myBar");
+      bar.style.width = percent + "%";
+      bar.innerHTML = percent + "%";
+    };
 
-        window.applicationCache.oncached = function () {
-            document.getElementById("progress").innerHTML = "Page Cached Successfully ✅";
-            localStorage.is755BCached = true;
-            setTimeout(() => location.reload(), 1500);
-        };
+    window.applicationCache.oncached = function () {
+      document.getElementById("progress").innerHTML = "Page Cached Successfully ✅";
+      localStorage.is755BCached = true;
+      setTimeout(function () {
+        window.location.reload();
+      }, 1500);
+    };
 
-        window.applicationCache.onupdateready = function () {
-            document.getElementById("progress").innerHTML = "Update Cache Successfully ♻️";
-            localStorage.is755BCached = true;
-            setTimeout(() => location.reload(), 1500);
-        };
+    window.applicationCache.onupdateready = function () {
+      document.getElementById("progress").innerHTML = "Update Cache Successfully 🔄";
+      localStorage.is755BCached = true;
+      setTimeout(function () {
+        window.location.reload();
+      }, 1500);
+    };
 
-        window.applicationCache.onnoupdate = function () {
-            document.getElementById("progress").innerHTML = "No Update Found ✅";
-            setTimeout(() => window.location.replace("index.html"), 1000);
-        };
+    window.applicationCache.onnoupdate = function () {
+      window.location.replace("index.html");
+    };
 
-        window.applicationCache.onerror = function () {
-            document.getElementById("progress").innerHTML = "Cache Error ❌! Redirecting...";
-            setTimeout(() => window.location.replace("index.html"), 1000);
-        };
-    </script>
+    window.applicationCache.onerror = function () {
+      window.location.replace("index.html");
+    };
+  </script>
 
 </body>
 </html>
