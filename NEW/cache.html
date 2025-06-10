@@ -53,7 +53,7 @@
 </head>
 <body>
 
-    <div id="progress">!! Loading.. Please Wait</div>
+    <div id="progress">Loading.. Please Wait !!</div>
     <div id="myProgress">
     <div id="myBar">0%</div>
     </div>
@@ -85,24 +85,24 @@
         };
 
         window.applicationCache.oncached = function () {
-            document.getElementById("progress").innerHTML = "✅ Page Cached Successfully";
+            document.getElementById("progress").innerHTML = "Page Cached Successfully ✅";
             localStorage.is755BCached = true;
             setTimeout(() => location.reload(), 1500);
         };
 
         window.applicationCache.onupdateready = function () {
-            document.getElementById("progress").innerHTML = "♻️ Update Cache Successfully";
+            document.getElementById("progress").innerHTML = "Update Cache Successfully ♻️";
             localStorage.is755BCached = true;
             setTimeout(() => location.reload(), 1500);
         };
 
         window.applicationCache.onnoupdate = function () {
-            document.getElementById("progress").innerHTML = "✅ No Update Found";
+            document.getElementById("progress").innerHTML = "No Update Found ✅";
             setTimeout(() => window.location.replace("index.html"), 1000);
         };
 
         window.applicationCache.onerror = function () {
-            document.getElementById("progress").innerHTML = "❌ Cache Error! Redirecting...";
+            document.getElementById("progress").innerHTML = "Cache Error ❌! Redirecting...";
             setTimeout(() => window.location.replace("index.html"), 1000);
         };
     </script>
