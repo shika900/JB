@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>Auto Cache (FW 9.xx)</title>
-  <script>history.replaceState(null, null, 'index.html');</script>
   <style>
     body {
       background-image: url("2.png");
@@ -16,42 +15,48 @@
       text-align: center;
       overflow: hidden;
       margin: 0;
-      font-family: Arial, sans-serif;
-    }
-
-    #progress {
-      font-size: 24px;
-      margin-top: 60px;
     }
 
     #myProgress {
-      border: 5px solid #080261;
-      border-radius: 5px;
-      background-color: rgba(0, 0, 0, 0.3);
+      border: 4px solid #FFFFFF;
+      border-radius: 10px;
+      background-color: rgba(255, 255, 255, 0.1);
       height: 45px;
+      width: 80%;
+      max-width: 600px;
       position: absolute;
       top: 0;
       bottom: 0;
-      left: 150px;
-      right: 150px;
+      left: 0;
+      right: 0;
       margin: auto;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+      overflow: hidden;
     }
 
     #myBar {
       width: 0%;
-      height: 40px;
-      background-color: #080261;
+      height: 100%;
+      background: linear-gradient(90deg, #87FF33 0%, #0f0 100%);
       text-align: center;
-      line-height: 40px;
-      color: white;
-      font-size: 30px;
+      line-height: 45px;
+      color: black;
+      font-size: 22px;
+      font-weight: bold;
+      transition: width 0.4s ease;
     }
 
     a {
       text-decoration: none;
     }
 
-    #footer {
+    h1 {
+      margin-top: 40px;
+      font-size: 24px;
+      text-shadow: 0.1em 0.1em 0.2em black;
+    }
+
+    .footer {
       background-color: #032140;
       color: white;
       position: fixed;
@@ -59,71 +64,80 @@
       bottom: 0;
       width: 100%;
       text-align: center;
-      padding: 10px 0;
       font-size: 16px;
-    }
-
-    #footer a {
-      font-size: 20px;
-      color: yellow;
+      padding: 10px 0;
     }
   </style>
+  <script>
+    history.replaceState(null, null, 'index.html');
+  </script>
 </head>
-<body>
 
-  <h1 id="progress">Loading.. Please Wait ⏳</h1>
-  <hr><br>
+<body onload="frame1()">
+
+  <h1 id="progress">Loading.. Please Wait ✅</h1>
+
   <div id="myProgress">
     <div id="myBar">0%</div>
   </div>
 
-  <div id="footer">
-    <span style='color:#87FF33'>Modder & Dev: </span>
-    <a href="https://twitter.com/84Ciss" target="_blank">@84Ciss</a> - Find Me In Tweeter if you have any kind of issues!
-    <br><span style='color:#87FF33'>Special thanks: </span>Many Many Thanks to all Contributors in PS4 Scene ∆❍X❑
-  </div>
-
   <script>
-    if (window.applicationCache.status === 2) {
+    if (window.applicationCache.status == 2) {
       localStorage.is755BCached = true;
     }
 
     window.applicationCache.ondownloading = function () {
-      document.getElementById("progress").innerHTML = "Page Caching Started 📥";
+      document.getElementById("progress").innerHTML = "Caching Started ⏳";
       localStorage.is755BCached = false;
     };
 
-    window.applicationCache.onprogress = function (e) {
-      var percent = Math.round(100 * (e.loaded / e.total));
-      var bar = document.getElementById("myBar");
-      bar.style.width = percent + "%";
-      bar.innerHTML = percent + "%";
+    window.applicationCache.onprogress = function (a) {
+      const percent = Math.round(100 * (a.loaded / a.total));
+      document.getElementById("myBar").style.width = percent + "%";
+      document.getElementById("myBar").innerHTML = percent + "%";
     };
 
     window.applicationCache.oncached = function () {
-      document.getElementById("progress").innerHTML = "Page Cached Successfully ✅";
+      document.getElementById("progress").innerHTML = "Cached Successfully ✅";
       localStorage.is755BCached = true;
-      setTimeout(function () {
-        window.location.reload();
-      }, 1500);
+      setTimeout(() => location.reload(), 1500);
     };
 
     window.applicationCache.onupdateready = function () {
-      document.getElementById("progress").innerHTML = "Update Cache Successfully 🔄";
+      document.getElementById("progress").innerHTML = "Update Ready 🔁";
       localStorage.is755BCached = true;
-      setTimeout(function () {
-        window.location.reload();
-      }, 1500);
+      setTimeout(() => location.reload(), 1500);
     };
 
     window.applicationCache.onnoupdate = function () {
-      window.location.replace("index.html");
+      location.replace("index.html");
     };
 
     window.applicationCache.onerror = function () {
-      window.location.replace("index.html");
+      location.replace("index.html");
     };
+
+    function frame1() {
+      var elem = document.getElementById("myBar");
+      var width = 0;
+      var id = setInterval(function () {
+        if (width < 100) {
+          width++;
+          elem.style.width = width + "%";
+          elem.innerHTML = width + "%";
+        } else {
+          clearInterval(id);
+        }
+      }, 20);
+    }
   </script>
+
+  <div class="footer">
+    <span style="color:#87FF33;">Modder & Dev:</span>
+    <a href="https://twitter.com/84Ciss" style="color: yellow;">@84Ciss</a> —
+    Find me on Twitter if you have any kind of issues!<br>
+    <span style="color:#87FF33;">Special thanks:</span> Many thanks to all contributors in the PS4 scene 💚
+  </div>
 
 </body>
 </html>
