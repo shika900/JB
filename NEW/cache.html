@@ -3,7 +3,7 @@
 <script>history.replaceState(null,null,'index.html');</script>
 </head>
 <style>
-    body {
+  body {
     background-image: url("ps4.png"); /* العودة إلى الصورة الأصلية png */
     background-position: center;
     background-size: cover;
@@ -15,48 +15,47 @@
     overflow: hidden;
     direction: rtl; /* إضافة اتجاه النص من اليمين لليسار */
 }
- #myProgress {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 90%;
-      max-width: 600px;
-      height: 30px;
-      color: white;
-      border-radius: 100px;
-      border: solid 1px rgb(0, 150, 255);
-      box-shadow: 0px 0px 5px rgb(0, 150, 255);
-      overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: rgba(0, 0, 0, 0.3); /* شفاف */
-    }
+#myProgress {
+    border: solid 1px rgb(0, 150, 255);
+    box-shadow: 0px 0px 5px rgb(0, 150, 255);
+    border-radius: 100px;
+    background-color: rgba(0, 0, 0, 0.3);
+    height: 30px;
+    position: fixed;
+    top: 50%;
+    bottom: 0;
+    left: 150;
+    right: 150;
+    margin: auto;
+}
 
-    #myBar {
-      width: 0%;
-      min-width: 100px;
-      height: 30px;
-      background-color: #080261;
-      text-align: center;
-      line-height: 30px;
-      color: white;
-      font-size: 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    footer {
-      background-color: #032140;
-      color: white;
-      position: fixed;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      text-align: center;
-      padding: 10px;
-    }
+#myProgressudp {
+    border: 5px solid #FFFFFF;
+    border-radius: 5px;
+    background-color: #ddd;
+    height: 45px;
+    position: absolute;
+    top: -130;
+    bottom: 0;
+    left: 150;
+    right: 150;
+    margin: auto;
+}
+#myBar {
+    width: 0%;
+    height: 30px;
+    background-color: #080261
+        /*#080261*/
+    ;
+    text-align: center;
+    line-height: 30px;
+    color: white;
+    font-size: 35px;
+    padding-top: 5px;
+}
+a {
+    text-decoration: none;
+}
 </style>
 	<body>		
         <script>
