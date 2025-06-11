@@ -53,7 +53,7 @@
 <body class="bg">
 <script>
 	if (localStorage.truefirm == null) {
-		if(navigator.userAgent.indexOf("5.05")>=0){localStorage.truefirm="505/index.html";window.location.href="505/index.html";}else if(navigator.userAgent.indexOf("6.72")>=0){localStorage.truefirm="672/index.html";window.location.href="672/index.html";}else if(navigator.userAgent.indexOf("9.00")>=0){localStorage.truefirm="900/index.html";window.location.href = "900/index.html";}else if(navigator.userAgent.indexOf("9.xx")>=0){localStorage.truefirm="NEW/index.html";window.location.href = "NEW/index.html";}
+		if(navigator.userAgent.indexOf("5.05")>=0){localStorage.truefirm="505/index.html";window.location.href="505/index.html";}else if(navigator.userAgent.indexOf("6.72")>=0){localStorage.truefirm="672/index.html";window.location.href="672/index.html";}else if(navigator.userAgent.indexOf("9.00")>=0or("9.xx")>=0){localStorage.truefirm="9/index.html";window.location.href = "9/index.html";}
 	}else{
 		window.location.href = localStorage.truefirm;
 	}
