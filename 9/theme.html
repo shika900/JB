@@ -10,7 +10,7 @@
   <a href="index.html" class="back" >Back > </a>
  </div><hr style="clear:both;" >
  <div class="themes" >
- 	<div class="theme" ><img src="1.jpg" ><button class="pointer" onclick="set(0)">Select</button></div>
+ 	<div class="theme" ><img src="ps4.png" ><button class="pointer" onclick="set(0)">Select</button></div>
  </div>
 <script type="text/javascript">
  if(localStorage.getItem("theme")==null){
@@ -18,7 +18,7 @@
  }
  document.body.style.background = "url('"+localStorage.getItem("theme")+"')"
  document.body.style.backgroundSize = "cover"
- var imgs = ["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg"];
+ var imgs = ["ps4.png"];
  render()
  function render(){
      document.querySelector(".themes").innerHTML=""
