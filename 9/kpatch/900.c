@@ -1,3 +1,4 @@
+
 /* Copyright (C) 2024-2025 anonymous
 
 This file is part of PSFree.
@@ -17,8 +18,6 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.  */
 
 // 9.00
 
-#include <stddef.h>
-
 #include "types.h"
 #include "utils.h"
 
@@ -31,39 +30,120 @@ struct kexec_args {
     u64 arg5;
 };
 
-void do_patch(void);
-void restore(struct kexec_args *uap);
+static inline void restore(void *kbase, struct kexec_args *uap);
+static inline void patch_aio(void *kbase);
+static inline void do_patch(void *kbase);
 
 __attribute__((section (".text.start")))
 int kpatch(void *td, struct kexec_args *uap) {
-    do_patch();
-    restore(uap);
+    const u64 xfast_syscall_off = 0x1c0;
+    void * const kbase = (void *)rdmsr(0xc0000082) - xfast_syscall_off;
+
+    do_patch(kbase);
+    patch_aio(kbase);
+    restore(kbase, uap);
+
     return 0;
 }
 
-void restore(struct kexec_args *uap) {
+__attribute__((always_inline))
+static inline void restore(void *kbase, struct kexec_args *uap) {
     u8 *pipe = uap->arg1;
     u8 *pipebuf = uap->arg2;
-    for (size_t i = 0; i < 0x18; i++) {
+    for (int i = 0; i < 0x18; i++) {
         pipe[i] = pipebuf[i];
     }
     u64 *pktinfo_field = uap->arg3;
     *pktinfo_field = 0;
     u64 *pktinfo_field2 = uap->arg4;
     *pktinfo_field2 = 0;
+
+    u64 *sysent_661_save = uap->arg5;
+    for (int i = 0; i < 0x30; i += 8) {
+        write64(kbase, 0x1107f00 + i, sysent_661_save[i / 8]);
+    }
 }
 
-void do_patch(void) {
-    // offset to fast_syscall()
-    const size_t off_fast_syscall = 0x1c0;
-    void * const kbase = (void *)rdmsr(0xc0000082) - off_fast_syscall;
+__attribute__((always_inline))
+static inline void patch_aio(void *kbase) {
+    const u64 aio_off = 0x415a01;
 
     disable_cr0_wp();
 
-    // ChendoChap's patches from pOOBs4 ///////////////////////////////////////
+    // offset = 0x00
+    // patch = {0xeb, 0x48}
+    write16(kbase, aio_off + 0x00, 0x48eb);
 
-    // Initial patches
-    write16(kbase, 0x626874, 0x9090); // veriPatch
+    // offset = 0x42
+    // patch = {0xeb, 0x06}
+    write16(kbase, aio_off + 0x42, 0x06eb);
+
+    // offset = 0x4a
+    // patch = {0x41, 0x83, 0xbf, 0xa0, 0x04, 0x00, 0x00, 0x00}
+    write64(kbase, aio_off + 0x4a, 0x00000004a0bf8341);
+
+    // offset = 0x58
+    // patch = {0x49, 0x8b, 0x87, 0xd0, 0x04, 0x00, 0x00}
+    write32(kbase, aio_off + 0x58, 0xd0878b49);
+    write16(kbase, aio_off + 0x5c, 0x0004);
+    write8(kbase, aio_off + 0x5e, 0x00);
+
+    // offset = 0x65
+    // patch = {0x49, 0x8b, 0xb7, 0xb0, 0x04, 0x00, 0x00}
+    write32(kbase, aio_off + 0x65, 0xb0b78b49);
+    write16(kbase, aio_off + 0x69, 0x0004);
+    write8(kbase, aio_off + 0x6b, 0x00);
+
+    // offset = 0x7d
+    // patch = {0x49, 0x8b, 0x87, 0x40, 0x05, 0x00, 0x00}
+    write32(kbase, aio_off + 0x7d, 0x40878b49);
+    write16(kbase, aio_off + 0x81, 0x0005);
+    write8(kbase, aio_off + 0x83, 0x00);
+
+    // offset = 0x8a
+    // patch = {0x49, 0x8b, 0xb7, 0x20, 0x05, 0x00, 0x00}
+    write32(kbase, aio_off + 0x8a, 0x20b78b49);
+    write16(kbase, aio_off + 0x8e, 0x0005);
+    write8(kbase, aio_off + 0x90, 0x00);
+
+    // offset = 0xa2
+    // patch = {0x49, 0x8d, 0xbf, 0xc0, 0x00, 0x00, 0x00}
+    write32(kbase, aio_off + 0xa2, 0xc0bf8d49);
+    write16(kbase, aio_off + 0xa6, 0x0000);
+    write8(kbase, aio_off + 0xa8, 0x00);
+
+    // offset = 0xae
+    // patch = {0x49, 0x8d, 0xbf, 0xe0, 0x00, 0x00, 0x00}
+    write32(kbase, aio_off + 0xae, 0xe0bf8d49);
+    write16(kbase, aio_off + 0xb2, 0x0000);
+    write8(kbase, aio_off + 0xb4, 0x00);
+
+    // offset = 0xc1
+    // patch = {0x49, 0x8d, 0xbf, 0x00, 0x01, 0x00, 0x00}
+    write32(kbase, aio_off + 0xc1, 0x00bf8d49);
+    write16(kbase, aio_off + 0xc5, 0x0001);
+    write8(kbase, aio_off + 0xc7, 0x00);
+
+    // offset = 0xcd
+    // patch = {0x49, 0x8d, 0xbf, 0x20, 0x01, 0x00, 0x00}
+    write32(kbase, aio_off + 0xcd, 0x20bf8d49);
+    write16(kbase, aio_off + 0xd1, 0x0001);
+    write8(kbase, aio_off + 0xd3, 0x00);
+
+    // offset = 0xde
+    // patch = {0x49, 0x8b, 0xff}
+    write16(kbase, aio_off + 0xde, 0x8b49);
+    write8(kbase, aio_off + 0xe0, 0xff);
+
+    enable_cr0_wp();
+}
+
+__attribute__((always_inline))
+static inline void do_patch(void *kbase) {
+    disable_cr0_wp();
+
+    // ChendoChap's patches from pOOBs4
+    write16(kbase, 0x626874, 0x00eb); // veriPatch
     write8(kbase, 0xacd, 0xeb); // bcopy
     write8(kbase, 0x2713fd, 0xeb); // bzero
     write8(kbase, 0x271441, 0xeb); // pagezero
@@ -72,6 +152,9 @@ void do_patch(void) {
     write8(kbase, 0x2716ad, 0xeb); // copyin
     write8(kbase, 0x271b5d, 0xeb); // copyinstr
     write8(kbase, 0x271c2d, 0xeb); // copystr
+
+    // stop sysVeri from causing a delayed panic on suspend
+    write16(kbase, 0x62715f, 0x00eb);
 
     // patch amd64_syscall() to allow calling syscalls everywhere
     // struct syscall_args sa; // initialized already
@@ -108,8 +191,8 @@ void do_patch(void) {
     //
     // sy_call() is the function that will execute the requested syscall.
     write8(kbase, 0x4c2, 0xeb);
-    write16(kbase, 0x4b9, 0x9090);
-    write16(kbase, 0x4b5, 0x9090);
+    write16(kbase, 0x4b9, 0x00eb);
+    write16(kbase, 0x4b5, 0x00eb);
 
     // patch sys_setuid() to allow freely changing the effective user ID
     // ; PRIV_CRED_SETUID = 50
@@ -126,9 +209,9 @@ void do_patch(void) {
     //     vm_map_unlock(map);
     //     return (KERN_PROTECTION_FAILURE);
     // }
-    write32(kbase, 0x80b8d, 0);
+    write16(kbase, 0x80b8b, 0x04eb);
 
-    // TODO: Description of this patch. "prx"
+    // TODO: Description of this patch. patch sys_dynlib_load_prx()
     write16(kbase, 0x23aec4, 0xe990);
 
     // patch sys_dynlib_dlsym() to allow dynamic symbol resolution everywhere
@@ -176,12 +259,13 @@ void do_patch(void) {
     // int sys_kexec(struct thread td, struct args *uap) {
     //     asm("jmp qword ptr [rsi]");
     // }
+    const u64 sysent_11_off = 0x1100520;
     // .sy_narg = 2
-    write32(kbase, 0x1100520, 2);
+    write32(kbase, sysent_11_off, 2);
     // .sy_call = gadgets['jmp qword ptr [rsi]']
-    write64(kbase, 0x1100520 + 8, kbase + 0x4c7ad);
+    write64(kbase, sysent_11_off + 8, kbase + 0x4c7ad);
     // .sy_thrcnt = SY_THR_STATIC
-    write32(kbase, 0x1100520 + 0x2c, 1);
+    write32(kbase, sysent_11_off + 0x2c, 1);
 
     enable_cr0_wp();
 }
