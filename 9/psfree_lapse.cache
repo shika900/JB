@@ -1,6 +1,5 @@
 CACHE MANIFEST 
 # v2.5.5 Self-Host 
-
 about.html
 alert.mjs
 cache.html
@@ -19,9 +18,6 @@ fonts\FONTS.LICENSE
 fonts\LiberationMono-Regular.ttf
 fonts\README.txt
 kpatch\900.c
-kpatch\900.d
-kpatch\900.elf
-kpatch\900.o
 kpatch\Makefile
 kpatch\script.ld
 kpatch\types.h
