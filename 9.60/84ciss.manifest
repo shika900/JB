@@ -2,9 +2,9 @@ CACHE MANIFEST
 #VERSION 1.1 
 
 CACHE: 
-1.jpg
-2.jpg
-3.jpg
+1.png
+2.png
+3.png
 alert.js
 backup.bin
 cache.html
@@ -46,4 +46,5 @@ rop\900.js
 rop\950.js
 
 NETWORK: 
+
 * 
