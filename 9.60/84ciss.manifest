@@ -12,7 +12,7 @@ config.js
 disabled_update.bin
 enabled_update.bin
 gamedumper.bin
-goldhen.bin
+payload.bin
 hen.png
 index.html
 installergta5rdr2prx.bin
@@ -48,3 +48,4 @@ rop\950.js
 NETWORK: 
 
 * 
+
