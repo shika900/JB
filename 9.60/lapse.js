@@ -146,7 +146,7 @@ function toogle_payload(PLfile) {
 
 function Exploit_done(){
 load_exploit_done();
-toogle_payload('goldhen.bin');
+toogle_payload('payload.bin');
 }
 
 // sys/socket.h
