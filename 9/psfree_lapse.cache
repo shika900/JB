@@ -6,7 +6,7 @@ alert.mjs
 cache.html
 config.mjs
 COPYING
-icon0.jpg
+ps4.png
 index.html
 lapse.mjs
 LICENSE
@@ -35,4 +35,5 @@ module\offset.mjs
 module\rw.mjs
 module\utils.mjs
 module\view.mjs
+
 rop\900.mjs
