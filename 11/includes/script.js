@@ -65,9 +65,9 @@ $("#jailbreak").onclick=start;
 window.addEventListener("load",()=>{
   if(!auto) return;
   log("[+] Auto Jailbreak: ON");
-  log("[+] Auto start in 2 seconds...");
-  setTimeout(()=>{
-    if(auto && !running) start();
-  },2000);
+log("[+] Auto start in 5 seconds...");
+setTimeout(()=>{
+  if(auto && !running) start();
+},5000);
 });
 })();
