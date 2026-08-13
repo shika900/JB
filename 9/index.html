@@ -1,95 +1,39 @@
-<!--
-Copyright (C) 2023-2025 anonymous
-
-This file is part of PSFree.
-
-PSFree is free software: you can redistribute it and/or modify
-it under the terms of the GNU Affero General Public License as
-published by the Free Software Foundation, either version 3 of the
-License, or (at your option) any later version.
-
-PSFree is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU Affero General Public License for more details.
-
-You should have received a copy of the GNU Affero General Public License
-along with this program.  If not, see <https://www.gnu.org/licenses/>.
--->
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>PSFree - Lapse Exploit for 9.00</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      background: linear-gradient(to bottom right, #063FAB, #01258A);
-      background-image: url('ps4.png');
-      background-size: cover;
-      background-position: center;
-      color: white;
-      font-family: Arial, sans-serif;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-    }
-
-    @font-face {
-      font-family: 'logging';
-      src: url('fonts/LiberationMono-Regular.ttf');
-    }
-
-    .card {
-      background: rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(10px);
-      padding: 40px;
-      border-radius: 20px;
-      text-align: center;
-      width: 90%;
-      max-width: 700px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.3);
-    }
-
-    h1 {
-      font-size: 32px;
-      margin-bottom: 20px;
-    }
-
-    #console {
-      font-family: 'logging', monospace;
-      font-size: 18px;
-      text-align: left;
-      background: rgba(0, 0, 0, 0.7);
-      padding: 20px;
-      border-radius: 10px;
-      white-space: pre-wrap;
-      height: 300px;
-      overflow-y: auto;
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>PSFree • Lapse • Firmware 9.00</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:#fff}
+body{min-height:100vh;display:grid;place-items:center;padding:22px;background:#030711 url("ps4.png") center/cover no-repeat;overflow:hidden}
+body:before{content:"";position:fixed;inset:0;background:linear-gradient(135deg,rgba(1,7,18,.88),rgba(4,14,32,.58),rgba(23,3,42,.62));z-index:-1}
+.shell{width:min(900px,100%)}.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:15px}.logo img{width:210px;max-height:58px;object-fit:contain;object-position:left center;filter:drop-shadow(0 0 14px rgba(70,170,255,.15))}
+.fw{padding:10px 15px;border:1px solid rgba(35,151,255,.6);border-radius:12px;background:rgba(4,12,25,.7);font-size:11px;letter-spacing:.7px}.fw b{color:#55b8ff}
+.card{padding:30px;border:1px solid rgba(111,170,255,.2);border-radius:22px;background:rgba(3,10,22,.75);backdrop-filter:blur(18px);box-shadow:0 30px 85px rgba(0,0,0,.5)}
+h1{font-size:clamp(27px,5vw,45px);line-height:1.05;text-align:center;margin:0 0 8px;letter-spacing:-1.5px}p{text-align:center;color:#9daabe;font-size:13px;margin:0 0 20px}
+.console-head{display:flex;justify-content:space-between;padding:12px 14px;border:1px solid rgba(100,155,220,.15);border-bottom:0;border-radius:13px 13px 0 0;background:rgba(255,255,255,.025);font-size:10px;letter-spacing:1px;color:#9baac0}.console-head b{color:#55e89a}
+#console{height:330px;overflow:auto;margin:0;padding:17px;background:#03070d;border:1px solid rgba(100,155,220,.15);border-radius:0 0 13px 13px;color:#63f28d;text-align:left;font:12px/1.65 Consolas,Monaco,monospace;white-space:pre-wrap}
+@media(max-width:520px){body{padding:12px}.top{gap:10px}.logo img{width:140px}.fw{font-size:9px;padding:8px 9px}.card{padding:18px}#console{height:280px}}
+</style>
 </head>
 <body>
-  <script>
-    if (window.applicationCache.status === 0) {
-      window.location.replace("cache.html");
-    }
-  </script>
-
-  <div class="card">
-    <h1>PSFree - Lapse Exploit for Firmware 9.00</h1>
-    <pre id="console"></pre>
+<main class="shell">
+  <div class="top">
+    <div class="logo"><img src="shika-logo.png" alt="Play Station Store Shika"></div>
+    <div class="fw">FIRMWARE <b>9.00</b></div>
   </div>
-
-  <script src="payload.js"></script>
-  <script type="module" src="./alert.mjs"></script>
+  <section class="card">
+    <h1>PSFree • Lapse</h1>
+    <p>PS4 Jailbreak • Firmware 9.00</p>
+    <div class="console-head"><span>CONSOLE OUTPUT</span><span>STATUS: <b>READY</b></span></div>
+    <pre id="console"></pre>
+  </section>
+</main>
+<script>
+if(window.applicationCache.status===0){window.location.replace("cache.html");}
+</script>
+<script src="payload.js"></script>
+<script type="module" src="./alert.mjs"></script>
 </body>
 </html>
