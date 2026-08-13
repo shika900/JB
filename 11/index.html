@@ -2,89 +2,71 @@
 <html lang="en" manifest="cache.manifest">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#050712">
-  <title>PS4 Jailbreak • Firmware 9.00 / 11.02</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#050a14">
+  <title>Shika PS4 • 11.xx</title>
   <link rel="stylesheet" href="includes/style.css">
 </head>
 <body>
   <main class="shell">
-    <header class="topbar">
-      <div class="brand">
-        <img src="includes/shika-logo.png" alt="Play Station Store Shika">
-      </div>
-      <div class="firmware-badge">
-        <span class="ps-symbol">PS4</span>
-        <span class="divider"></span>
-        <span>FIRMWARE <b>9.00 / 11.02</b></span>
+    <header class="hero">
+      <div class="brand-mark">PS4</div>
+      <div>
+        <p class="eyebrow">SHIKA • PS4 TOOLKIT</p>
+        <h1>CSSFontFace <span>UAF</span></h1>
+        <p class="subtitle" id="UA">Running on:</p>
       </div>
     </header>
 
-    <section class="intro">
-      <div class="intro-copy">
-        <div class="kicker">PS4</div>
-        <h1>JAILBREAK</h1>
-        <p id="UA">Firmware 9.00 / 11.02</p>
-        <p class="powered">Powered by Lapse / NetCtrl</p>
-      </div>
-
-      <div class="feature-grid" aria-hidden="true">
-        <article class="feature easy"><span class="feature-icon">↗</span><b>EASY</b><small>One Click<br>Jailbreak</small></article>
-        <article class="feature safe"><span class="feature-icon">◆</span><b>SAFE</b><small>Tested &amp;<br>Trusted</small></article>
-        <article class="feature fast"><span class="feature-icon">ϟ</span><b>FAST</b><small>Optimized<br>Exploit</small></article>
-        <article class="feature user"><span class="feature-icon">⌕</span><b>USER MODE</b><small>GoldHEN<br>Payload</small></article>
-      </div>
-    </section>
-
     <section class="control-card">
-      <div class="control-column">
-        <div class="section-heading"><span>01</span> SELECT EXPLOIT</div>
-        <form id="kernel-options" class="radio-group">
-          <label class="radio-item">
-            <input type="radio" name="kernel" id="lapse-exploit" value="lapse" checked>
-            <span class="radio-ui"></span>
-            <span class="radio-copy"><b>Lapse Exploit</b><small>Recommended • Default</small></span>
-            <span class="check">✓</span>
-          </label>
-          <label class="radio-item">
-            <input type="radio" name="kernel" id="netctrl-exploit" value="netctrl">
-            <span class="radio-ui"></span>
-            <span class="radio-copy"><b>NetCtrl Exploit</b><small>Alternative</small></span>
-            <span class="check">✓</span>
-          </label>
-        </form>
+      <div class="section-title">
+        <span>Kernel chain</span>
+        <small>Choose your preferred method</small>
       </div>
 
-      <div class="control-column auto-column">
-        <div class="section-heading"><span>02</span> OPTIONS</div>
-        <label class="autoJb">
-          <span class="auto-copy"><b id="autoJbLabel">Auto Jailbreak</b><small>Automatically starts after page load</small></span>
-          <input id="autoJbInput" type="checkbox" checked>
-          <span class="switch"></span>
+      <form id="kernel-options" class="radio-group">
+        <label class="radio-item">
+          <input type="radio" name="kernel" id="lapse-exploit" value="lapse">
+          <span class="radio-ui"></span>
+          <span><b>Lapse</b><small>Recommended</small></span>
         </label>
-      </div>
+        <label class="radio-item">
+          <input type="radio" name="kernel" id="netctrl-exploit" value="netctrl">
+          <span class="radio-ui"></span>
+          <span><b>NetCtrl</b><small>Alternative</small></span>
+        </label>
+      </form>
 
       <button id="jeilbrek" class="jb-button" type="button">
-        <span class="ps-mark">PS</span>
-        <span class="jb-text"><b>JAILBREAK</b><small>STARTING AUTOMATICALLY</small></span>
-        <span class="arrow">→</span>
+        <span>JAILBREAK</span>
+        <i>→</i>
       </button>
-      <p class="notice">Lapse is selected by default • Auto Jailbreak starts after 5 seconds</p>
+
+      <label class="autoJb">
+        <span>
+          <b id="autoJbLabel">Auto Jailbreak</b>
+          <small>Start automatically after page load</small>
+        </span>
+        <input id="autoJbInput" type="checkbox">
+        <span class="switch"></span>
+      </label>
     </section>
 
-    <section class="console-wrap">
-      <div class="console-head">
-        <span><i></i> CONSOLE</span>
-        <span class="status">STATUS: <b>READY</b><em></em></span>
+    <section class="workspace">
+      <div class="media-box">
+        <img src="includes/ps4.png" alt="PS4 console">
+        <div class="status-pill"><span></span> Ready</div>
       </div>
-      <pre id="console">[+] Initializing PS4 Jailbreak...
-[+] Lapse selected by default
-[+] Auto Jailbreak enabled
-[+] Starting in 5 seconds...</pre>
-      <img class="console-watermark" src="includes/shika-logo.png" alt="">
+      <div class="console-wrap">
+        <div class="console-head">
+          <span>CONSOLE OUTPUT</span>
+          <small>LIVE</small>
+        </div>
+        <pre id="console">Ready. Awaiting execution...</pre>
+      </div>
     </section>
 
-    <footer>Play Station Store • PS4 Firmware 9.00 / 11.02</footer>
+    <footer>Firmware 11.xx • Local/offline compatible</footer>
   </main>
 
   <script src="src/main.js"></script>
