@@ -1,219 +1,52 @@
-<!DOCTYPE html><html manifest="offlinexmb.cache">
+<!doctype html>
+<html lang="en" manifest="offlinexmb.cache">
 <head>
-<title>Shika Store</title>
-<style type="text/css">
-html, body {
-background-image: url("ps4.png");
-background-position: center;
-margin:auto;
-font-family:sans-serif;
-font-size:20px;
-font-weight:lighter;
-text-align:left;
-color:#FFFFFF;
-background-size:cover;
-margin: 0;
-height: 100%;
-padding: 0;
-overflow: hidden;
-font-family: sans-serif;
-font-size: 20px;
-font-weight: bold;
-text-align: center;  
-width: 100%;
-overflow: hidden;
-}
-#head {
- font-weight:bold;
- font-size:20px;
- color: white;
-  margin-right:10%;
-}
- button {
-            
-            border: 2px solid black;
-            border-radius: 10px;
-			width: 250px;
-            height: 45px;            
-            text-align: center;
-            padding: 1px;
-            margin: 1px;
-            box-shadow: 0 5px 20px 0 white;
-            background:rgba(0,0,0,0.5);
-}
-button:hover {
-            box-shadow: 0 5px 50px 0 white;
-            color: white;
-            border-radius: 10px;
-            background-color: #0F0F53;
-}
-header{
-	height: 3em;
-	position: fixed;
-	width: 100%;
-	top: 0;
-	left: 0;
-	z-index: 10;
-}
-#clock{
- float:right;
- margin-right:2.25%;
- margin-top: 0px;
- font-weight:bold;
- font-size:20px;
-  color: white;
-}
-#date {
- float:left;
- margin-left:1.25%;
- font-weight:bold;
- margin-top: 5px;
- font-size:20px;
- color: white;
-}
-#donate2{
- float:right;
- margin-right:2.25%;
- margin-top: 0px;
- font-weight:bold;
- font-size:28px;
-  color: white;
-}
-#donate {
- float:left;
- margin-left:1.60%;
- font-weight:bold;
- margin-top: 0px;
- font-size:28px;
- color: white;
-}
-#msgs {
- font-weight:bold;
- font-size:17px;
-}
-header div{
-	height: 100%;
-	display: ruby-text;
-	margin-top: -1.5em;
-}
-.pointer {cursor: pointer;}
-.yellow {
-  color:yellow;
- }
- .hue {
-  color:yellow;
-  padding:10px;
-  border-radius:10px;
-  animation:hue 5s linear infinite;
-  -webkit-animation: hue 5s linear infinite;
-  box-shadow: 0px 0px 50px yellow;
-  color:white;
-  background:rgba(255,255,0,0.4);
- }
- .hue:hover{
-  color:yellow;
-  background:transparent;
- }
- @keyframes hue{
- 0%{
- filter:hue-rotate(0deg);
- -webkit-filter:hue-rotate(0deg);
- }
- 10%{
- box-shadow: 0px 1px 50px yellow;
- }
- 20%{
- box-shadow: 1px 1px 50px yellow;
- }
- 30%{
- box-shadow: 1px 0px 50px yellow;
- }
- 40%{
-  box-shadow: 1px -1px 50px yellow;
- }
- 50%{
- box-shadow: 0px -1px 50px yellow;
- }
- 60%{
- box-shadow: -1px -1px 50px yellow;
- }
- 70%{
- box-shadow: -1px 0px 50px yellow;
- }
- 80%{
- box-shadow: -1px 1px 50px yellow;
- }
- 90%{
- box-shadow: 0px 1px 50px yellow;
- }
- 100%{
- filter:hue-rotate(360deg);
- -webkit-filter:hue-rotate(360deg);
- }
- }
-  .content {
-  width:80%;
-  margin-left:7.5%;
-  background:rgba(0,0,0,0.5);
-  color:white;
-  margin-top:0%;
-  font-size:25px;
-  text-align:center;
-  border-radius:30px;
-  padding:20px;
-  line-height:20px;
-  position:absolute;bottom:0px;
- }
- .title {
-  font-size:40px;
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-weight:bolder;
-  margin-bottom:10px;
- }
- h1 {
-text-shadow: 0.1em 0.1em 0.2em black;
-font-size: 25px;
-text-align: center;
-color: white;
-}
-.TextCaption{
-display: block;
-    font-size: 20px;
-    color: #fff;
-    text-decoration: none;
-}
-a img {
-    display: inline-block;  text-decoration: none;
-}
-a {
-    display: inline-block;  text-decoration: none;
-}
-
-a:hover img, a:hover .TextCaption{
-transform: scale(1.1)
-}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Play Station Store • PS4 5.05</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden}
+body{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:#fff;background:#030711 url("ps4.png") center/cover no-repeat}
+body:after{content:"";position:fixed;inset:0;background:linear-gradient(135deg,rgba(1,7,18,.88),rgba(4,15,34,.58),rgba(20,2,39,.62));z-index:-1}
+header{position:fixed;top:0;left:0;right:0;height:78px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;border-bottom:1px solid rgba(110,170,255,.18);background:rgba(2,7,16,.45);backdrop-filter:blur(14px);z-index:5}
+.brand{height:62px;display:flex;align-items:center}.brand img{width:220px;max-height:58px;object-fit:contain;object-position:left center;filter:drop-shadow(0 0 14px rgba(80,170,255,.16))}
+.fw{padding:10px 16px;border:1px solid rgba(35,151,255,.6);border-radius:12px;background:rgba(5,14,28,.7);font-size:12px;letter-spacing:.6px}.fw b{color:#55b8ff}
+main{height:100%;display:grid;place-items:center;padding:100px 20px 35px}.card{width:min(850px,100%);padding:34px;border:1px solid rgba(111,170,255,.2);border-radius:24px;background:rgba(3,10,22,.72);backdrop-filter:blur(18px);box-shadow:0 30px 90px rgba(0,0,0,.5)}
+.title{font-size:clamp(28px,5vw,48px);font-weight:900;letter-spacing:-1.8px;text-align:center}.subtitle{text-align:center;color:#9eacc0;font-size:13px;margin:8px 0 24px}
+.status{min-height:48px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(111,170,255,.14);border-radius:13px;background:rgba(255,255,255,.025);color:#77a6d8;font-size:12px;margin-bottom:14px}
+#loader1,#loader2{display:none}.ib{display:none}.info{font-size:18px;text-align:center}.pointer{cursor:pointer}
+button{border:1px solid rgba(70,173,255,.5);border-radius:13px;min-width:230px;height:48px;background:linear-gradient(100deg,#075fc0,#177cff);color:#fff;font-weight:800;box-shadow:0 10px 30px rgba(23,124,255,.18)}
+button:hover{filter:brightness(1.08)}#loader3{display:none!important}
 </style>
 <script>
-  window.applicationCache.ondownloading=function(){document.getElementById("msgs").innerHTML="Caching Started!!"};
-  window.applicationCache.onprogress=function(a){document.getElementById("msgs").innerHTML="Caching Status: "+(Math.round(100*(a.loaded/a.total)))+"% Completed"};
-  window.applicationCache.oncached=function(){document.getElementById("msgs").innerHTML="Cached Successfully!!";setTimeout(function(){document.getElementById("msgs").innerHTML="Reopen the Page !!"; }, 1500);localStorage.cached505G="yes";};
-  window.applicationCache.onnoupdate=function(){localStorage.cached505G="yes";};
-  window.applicationCache.onerror=function(){localStorage.cached505G="yes";};
+window.applicationCache.ondownloading=function(){document.getElementById("msgs").innerHTML="Caching Started!!"};
+window.applicationCache.onprogress=function(a){document.getElementById("msgs").innerHTML="Caching Status: "+(Math.round(100*(a.loaded/a.total)))+"% Completed"};
+window.applicationCache.oncached=function(){document.getElementById("msgs").innerHTML="Cached Successfully!!";setTimeout(function(){document.getElementById("msgs").innerHTML="Reopen the Page !!";},1500);localStorage.cached505G="yes";};
+window.applicationCache.onnoupdate=function(){localStorage.cached505G="yes";};
+window.applicationCache.onerror=function(){localStorage.cached505G="yes";};
 </script>
 </head>
-<body onload="if(localStorage.cached505G=='yes')setTimeout(goldhen24,50);" style='background-color:#1A1920'>
-<h1 id=msgs style='font-size:25px;text-shadow: 4px 4px 4px black;text-align:center;text-shadow: 4px 4px 4px black;color:Red;'></h1>
-<div id=loader1></div><div id=loader2></div>
-<div id=loader3 style='font-size:25px;text-shadow: 4px 4px 4px black;text-align:center;text-shadow: 4px 4px 4px black;color:white;display:none'>Loading</div><div id=done1 class="info"></div>
-<div id=done2 class="info" style=display:none></div>
-<div id=done3 class="info" style=display:none></div><br><div class=ib></div>
-<div id=fail class=info style=display:none></div>
-<br><br>
-
+<body onload="if(localStorage.cached505G=='yes')setTimeout(goldhen24,50);">
+<header>
+  <div class="brand"><img src="shika-logo.png" alt="Play Station Store Shika"></div>
+  <div class="fw">FIRMWARE <b>5.05</b></div>
+</header>
+<main>
+  <section class="card">
+    <div class="title">PS4 JAILBREAK</div>
+    <div class="subtitle">Firmware 5.05 • Play Station Store</div>
+    <div id="msgs" class="status">Preparing exploit environment…</div>
+    <div id="loader1"></div><div id="loader2"></div>
+    <div id="loader3" class="status">Loading</div>
+    <div id="done1" class="info"></div>
+    <div id="done2" class="info" style="display:none"></div>
+    <div id="done3" class="info" style="display:none"></div>
+    <div class="ib"></div>
+    <div id="fail" class="info" style="display:none"></div>
+  </section>
+</main>
 <script>
-function getScript(source,callback){var gs = document.createElement('script');gs.src = source;gs.onload = callback;gs.async = false;document.body.appendChild(gs);}
+function getScript(source,callback){var gs=document.createElement('script');gs.src=source;gs.onload=callback;gs.async=false;document.body.appendChild(gs);}
 function loadScript(){getScript('exploit.js',function(){setTimeout(exploit,1000);});}
 function anim(){document.getElementById('loader3').style.display='block';document.getElementById('done2').style.display='block';}
 function goldhen24(){bin="payload.bin";loadScript();anim();}
