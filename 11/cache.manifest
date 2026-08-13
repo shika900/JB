@@ -1,10 +1,13 @@
 CACHE MANIFEST
-# Shika 11 - PS4 background UI
+# Shika 11 UI cache v2026-08-13-02
+
 CACHE:
 index.html
 cache.manifest
 includes/ps4.png
+includes/shika-logo.png
 includes/style.css
 includes/script.js
+
 NETWORK:
 *
