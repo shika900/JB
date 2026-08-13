@@ -1,38 +1,60 @@
 <!doctype html>
 <html lang="en" manifest="cache.manifest">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <title>PS4 Jailbreak • 9.00 / 11.02</title>
 <link rel="stylesheet" href="includes/style.css">
 </head>
 <body>
-  <!-- The reference artwork is the entire visible UI. Functional controls are transparent overlays. -->
-  <img class="reference-ui" src="includes/background.png" alt="PS4 Jailbreak">
-
-  <div class="hit-area lapse-area">
-    <input type="radio" name="kernel" id="lapse-exploit" value="lapse" checked>
+<div class="screen">
+  <div class="topbar">
+    <div class="title">
+      <div class="purple">PS4</div>
+      <div class="big">JAILBREAK</div>
+      <div class="sub">WebKit Exploit for PS4 Firmware 9.00 / 11.02</div>
+      <div class="powered">Powered by <b>Lapse</b> / <b>NetCtrl</b></div>
+    </div>
+    <div class="firmware"><span>◉ PS4</span><i></i><strong>FIRMWARE <em>9.00</em> / <em>11.02</em></strong></div>
   </div>
 
-  <div class="hit-area netctrl-area">
-    <input type="radio" name="kernel" id="netctrl-exploit" value="netctrl">
+  <div class="cards">
+    <div class="card easy"><div class="icon">🚀</div><b>EASY</b><small>One Click<br>Jailbreak</small></div>
+    <div class="card safe"><div class="icon">🛡</div><b>SAFE</b><small>Tested &amp;<br>Trusted</small></div>
+    <div class="card fast"><div class="icon">ϟ</div><b>FAST</b><small>Optimized<br>Exploit</small></div>
+    <div class="card user"><div class="icon">🔒</div><b>USER MODE</b><small>GoldHEN<br>Payload</small></div>
   </div>
 
-  <label class="hit-area auto-area">
-    <span class="sr-only">Auto Jailbreak</span>
-    <input id="autoJbInput" type="checkbox" checked>
-  </label>
+  <div class="panels">
+    <section class="panel">
+      <h2>▣ 1. SELECT EXPLOIT</h2>
+      <label class="row selected"><input type="radio" name="exploit" value="lapse" checked><span class="rowicon">⌛</span><span><b>Lapse Exploit</b><small>Recommended</small></span><strong class="check">✓</strong></label>
+      <label class="row"><input type="radio" name="exploit" value="netctrl"><span class="rowicon purpleicon">♣</span><span><b>NetCtrl Exploit</b><small>Alternative</small></span><strong class="check">○</strong></label>
+    </section>
 
-  <button id="jeilbrek" class="hit-area jb-area" type="button" aria-label="Jailbreak"></button>
-
-  <div id="kernel-options" class="sr-only">
-    <span id="autoJbLabel">Auto Jailbreak</span>
+    <section class="panel">
+      <h2>⚙ 2. KERNEL OPTIONS</h2>
+      <label class="row option"><span><b>Auto Jailbreak</b><small>Automatically run payload after success</small></span><input id="autoJb" type="checkbox" checked><i class="switch"></i></label>
+      <div class="row option muted"><span><b>Kernel Debug</b><small>Enable kernel debug messages</small></span><span class="switch off"></span></div>
+    </section>
   </div>
 
-  <pre id="console" class="sr-only">[+] Initializing PS4 9.00 / 11.02 Jailbreak...</pre>
-  <div id="UA" class="sr-only"></div>
+  <button id="jailbreak" class="jb" type="button"><span class="ps">◉</span><span><b>JAILBREAK</b><small>CLICK TO START</small></span></button>
+  <div class="notice">ⓘ &nbsp; Make sure you are on Firmware 9.00 / 11.02</div>
 
-  <script src="src/main.js"></script>
-  <script src="includes/script.js"></script>
+  <section class="console">
+    <div class="console-head"><b>CONSOLE</b><span>STATUS: <i id="status">READY</i><u></u></span></div>
+    <pre id="console">[+] Initializing PS4 9.00 / 11.02 Jailbreak...
+[+] Exploit: Lapse
+[+] Waiting for user action...
+[+] All systems ready
+>>> Click JAILBREAK to start <span class="cursor"></span></pre>
+  </section>
+
+  <footer>♢ &nbsp; For Educational Use Only &nbsp; | &nbsp; Do Not Use for Illegal Purposes &nbsp; | &nbsp; © 2024 PlayStation Store</footer>
+</div>
+
+<script src="src/main.js"></script>
+<script src="includes/script.js"></script>
 </body>
 </html>

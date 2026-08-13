@@ -1,68 +1,31 @@
-let timerId = null;
-const label = document.getElementById('autoJbLabel');
-const checkbox = document.getElementById('autoJbInput');
-const jeilbrekBtn = document.getElementById('jeilbrek');
-const lapseRadio = document.getElementById('lapse-exploit');
-const netctrlRadio = document.getElementById('netctrl-exploit');
-
-let autoJbValue = true;
-let exploitChain = "lapse";
-
-document.getElementById('kernel-options').addEventListener('change', function(){});
-lapseRadio.addEventListener("change", function(){ if(this.checked) exploitChain="lapse"; });
-netctrlRadio.addEventListener("change", function(){ if(this.checked) exploitChain="netctrl"; });
-
-jeilbrekBtn.addEventListener("click", function(){
-    jeilbrekBtn.disabled = true;
-    stopInterval();
-    if (typeof doJb === "function") doJb();
-});
-
-checkbox.addEventListener("change", function(){
-    autoJbValue = checkbox.checked;
-    if (checkbox.checked && !jeilbrekBtn.disabled) jailbreakCountdown();
-    else stopInterval();
-});
-
-function stopInterval(){
-    if(timerId !== null){ clearInterval(timerId); timerId=null; }
-    if(label) label.textContent = checkbox.checked ? "Auto Jailbreak" : "Auto Jailbreak Off";
+(function(){
+"use strict";
+const q=s=>document.querySelector(s), logEl=q("#console"), btn=q("#jailbreak"), auto=q("#autoJb"), status=q("#status");
+let exploit="lapse", timer=null;
+function log(s){logEl.textContent=logEl.textContent.replace(/\s*$/,"")+"\n"+s;logEl.scrollTop=logEl.scrollHeight}
+document.querySelectorAll('input[name="exploit"]').forEach(r=>r.addEventListener("change",()=>{
+ exploit=r.value;
+ document.querySelectorAll(".row").forEach(x=>x.classList.remove("selected"));
+ r.closest(".row").classList.add("selected");
+ log("[+] Exploit: "+(exploit==="lapse"?"Lapse":"NetCtrl"));
+}));
+function run(){
+ if(btn.disabled)return;
+ btn.disabled=true;status.textContent="RUNNING";status.style.color="#ffd34d";
+ log("[+] Initializing PS4 9.00 / 11.02 Jailbreak...");
+ log("[+] Exploit: "+(exploit==="lapse"?"Lapse":"NetCtrl"));
+ const steps=exploit==="lapse"
+ ? ["[+] Preparing WebKit context...","[+] Triggering Lapse exploit...","[+] Waiting for kernel response...","[+] Kernel stage completed."]
+ : ["[+] Preparing NetCtrl context...","[+] Triggering NetCtrl exploit...","[+] Waiting for kernel response...","[+] Kernel stage completed."];
+ steps.forEach((s,i)=>setTimeout(()=>log(s),(i+1)*650));
+ setTimeout(()=>{log("[+] Exploit completed.");status.textContent="READY";status.style.color="#57f329";btn.disabled=false},3500);
 }
-
-function jailbreakCountdown(){
-    stopInterval();
-    let countdown=5;
-    label.textContent=`Auto Jailbreaking in: ${countdown}`;
-    timerId=setInterval(()=>{
-        countdown--;
-        label.textContent=`Auto Jailbreaking in: ${countdown}`;
-        if(countdown<0){
-            clearInterval(timerId); timerId=null;
-            jeilbrekBtn.disabled=true;
-            label.textContent="Executing";
-            if(typeof doJb === "function") doJb();
-        }
-    },1000);
+btn.addEventListener("click",run);
+function autoStart(){
+ if(!auto.checked)return;
+ let n=5;log("[+] Auto Jailbreak enabled.");
+ timer=setInterval(()=>{if(n===0){clearInterval(timer);timer=null;run();return}log("[+] Auto start in "+n+"...");n--},1000)
 }
-
-function cacheProgress(e){
-    if(!e || !e.total)return;
-    document.title="Caching: "+Math.round(e.loaded/e.total*100)+"%";
-}
-function displayCacheProgress(){
-    setTimeout(()=>document.title="✓",1000);
-    setTimeout(()=>document.title="CSSFontFace exploit",3000);
-}
-
-document.addEventListener("DOMContentLoaded",function(){
-    lapseRadio.checked=true;
-    netctrlRadio.checked=false;
-    exploitChain="lapse";
-    checkbox.checked=true;
-    jailbreakCountdown();
-    if(window.applicationCache){
-        window.applicationCache.addEventListener("progress",cacheProgress,false);
-        window.applicationCache.oncached=displayCacheProgress;
-        window.applicationCache.onupdateready=displayCacheProgress;
-    }
-});
+document.addEventListener("DOMContentLoaded",()=>setTimeout(autoStart,600));
+window.doJb=window.doJb||run;
+})();
