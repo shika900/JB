@@ -1,17 +1,18 @@
 CACHE MANIFEST
-# Shika PS4 11.x premium UI revision 2026-08-13-4
+# Shika 11 exact visual reference
 
 CACHE:
 index.html
 cache.manifest
+includes/background.png
+includes/style.css
+includes/script.js
 includes/ps4.png
 includes/shika-logo.png
-includes/script.js
-includes/style.css
+src/main.js
 src/payload.bin
 src/lapse.js
 src/loader.js
-src/main.js
 src/misc.js
 src/netctrl.js
 src/worker.js
