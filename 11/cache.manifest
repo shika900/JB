@@ -3,6 +3,7 @@ CACHE MANIFEST
 CACHE:
 index.html
 includes/ps4.png
+includes/shika-logo.png
 includes/script.js
 includes/style.css
 src/payload.bin
