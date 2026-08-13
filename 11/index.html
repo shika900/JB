@@ -24,7 +24,7 @@
       <div class="intro-copy">
         <div class="kicker">PS4</div>
         <h1>JAILBREAK</h1>
-        <p>WebKit Exploit for PS4 Firmware 9.00 / 11.02</p>
+        <p id="UA">Firmware 9.00 / 11.02</p>
         <p class="powered">Powered by Lapse / NetCtrl</p>
       </div>
 
@@ -41,9 +41,9 @@
         <div class="section-heading"><span>01</span> SELECT EXPLOIT</div>
         <form id="kernel-options" class="radio-group">
           <label class="radio-item">
-            <input type="radio" name="kernel" id="lapse-exploit" value="lapse">
+            <input type="radio" name="kernel" id="lapse-exploit" value="lapse" checked>
             <span class="radio-ui"></span>
-            <span class="radio-copy"><b>Lapse Exploit</b><small>Recommended</small></span>
+            <span class="radio-copy"><b>Lapse Exploit</b><small>Recommended • Default</small></span>
             <span class="check">✓</span>
           </label>
           <label class="radio-item">
@@ -58,18 +58,18 @@
       <div class="control-column auto-column">
         <div class="section-heading"><span>02</span> OPTIONS</div>
         <label class="autoJb">
-          <span class="auto-copy"><b id="autoJbLabel">Auto Jailbreak</b><small>Automatically run after page load</small></span>
-          <input id="autoJbInput" type="checkbox">
+          <span class="auto-copy"><b id="autoJbLabel">Auto Jailbreak</b><small>Automatically starts after page load</small></span>
+          <input id="autoJbInput" type="checkbox" checked>
           <span class="switch"></span>
         </label>
       </div>
 
       <button id="jeilbrek" class="jb-button" type="button">
         <span class="ps-mark">PS</span>
-        <span class="jb-text"><b>JAILBREAK</b><small>CLICK TO START</small></span>
+        <span class="jb-text"><b>JAILBREAK</b><small>STARTING AUTOMATICALLY</small></span>
         <span class="arrow">→</span>
       </button>
-      <p class="notice">Make sure you are on Firmware 9.00 / 11.02</p>
+      <p class="notice">Lapse is selected by default • Auto Jailbreak starts after 5 seconds</p>
     </section>
 
     <section class="console-wrap">
@@ -77,14 +77,14 @@
         <span><i></i> CONSOLE</span>
         <span class="status">STATUS: <b>READY</b><em></em></span>
       </div>
-      <pre id="console">[+] Initializing PS4 9.00 / 11.02 Jailbreak...
-[+] Waiting for user action...
-[+] All systems ready
->>> Click JAILBREAK to start</pre>
+      <pre id="console">[+] Initializing PS4 Jailbreak...
+[+] Lapse selected by default
+[+] Auto Jailbreak enabled
+[+] Starting in 5 seconds...</pre>
       <img class="console-watermark" src="includes/shika-logo.png" alt="">
     </section>
 
-    <footer>For Educational Use Only &nbsp; | &nbsp; Do Not Use for Illegal Purposes &nbsp; | &nbsp; © 2024 Play Station Store</footer>
+    <footer>Play Station Store • PS4 Firmware 9.00 / 11.02</footer>
   </main>
 
   <script src="src/main.js"></script>
