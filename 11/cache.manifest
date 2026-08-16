@@ -1,9 +1,8 @@
 CACHE MANIFEST
-# Shika 11.x cache revision 2026-08-13-2
 
 CACHE:
 index.html
-includes/ps4.png
+includes/cat.jpg
 includes/script.js
 includes/style.css
 src/payload.bin
