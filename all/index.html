@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PS4 7.00 - 13.00 FW GoldHEN Host | SHIKA STORE</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="ambient-glow"></div>
+
+<!-- Header -->
+<header class="app-header">
+  <div class="brand-section">
+    <div class="ps-symbols">
+      <span class="sym-triangle">&#9650;</span>
+      <span class="sym-circle">&#9679;</span>
+      <span class="sym-cross">&#10005;</span>
+      <span class="sym-square">&#9632;</span>
+    </div>
+    <span class="brand-title">GoldHEN Host</span>
+    <span class="brand-badge">7.00 - 13.00</span>
+  </div>
+
+  <div class="header-center">
+    <div class="fw-pill">
+      <span class="status-dot" id="status-dot"></span>
+      <span id="fw-display">Detecting Console...</span>
+    </div>
+  </div>
+
+  <div class="header-right">
+    <div class="goldhen-tag">
+      <span>&#9733;</span>
+      <span>GoldHEN v2.4b18.10</span>
+    </div>
+    <div class="clock-display" id="clock">--:--</div>
+  </div>
+</header>
+
+<!-- Main Area -->
+<main class="app-main">
+  <div class="status-card">
+    <div class="icon-wrapper">
+      <div class="spinner-outer" id="spinner-outer"></div>
+      <div class="spinner-inner"></div>
+      <div class="icon-core" id="status-icon">&#9881;</div>
+    </div>
+
+    <!-- Message target for jailbreak scripts -->
+    <h1 id="msgs">Loading GoldHEN v2.4b18.10... Please Wait</h1>
+
+    <div class="stats-row">
+      <div class="stat-chip">
+        <span>System:</span>
+        <strong id="sys-status">Auto-Exploit</strong>
+      </div>
+      <div class="stat-chip">
+        <span>Payload:</span>
+        <strong>GoldHEN 2.4b18.10</strong>
+      </div>
+      <div class="stat-chip">
+        <span>Host:</span>
+        <strong>Offline Ready</strong>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="app-footer">
+  <div class="credits-list">
+    <span class="credits-label">Special Thanks:</span>
+    <a href="https://twitter.com/_AlAzif" class="credit-pill" target="_blank">@_AlAzif</a>
+    <span class="credit-pill">ChendoChap</span>
+    <a href="https://x.com/Kameleonre_" class="credit-pill" target="_blank">@Kameleonre_</a>
+    <span class="credit-pill">SiSTR0</span>
+    <span class="credit-pill">Abc</span>
+    <span class="credit-pill">GamerHack</span>
+  </div>
+
+  <div class="store-badge">
+    <span>PLAYSTATION STORE SHIKA</span>
+  </div>
+</footer>
+
+<script>
+// Clock update
+function updateClock() {
+    var now = new Date();
+    var h = String(now.getHours()).padStart(2, '0');
+    var m = String(now.getMinutes()).padStart(2, '0');
+    var el = document.getElementById('clock');
+    if (el) el.textContent = h + ":" + m;
+}
+setInterval(updateClock, 1000);
+updateClock();
+
+var uaFull = navigator.userAgent;
+var match = uaFull.match(/PlayStation 4[ /]([\d.]+)/i);
+var isPS4 = match !== null;
+var fwVersion = isPS4 ? match[1] : "Unknown";
+var fwNum = parseFloat(fwVersion);
+
+function updateConsoleUI() {
+    var fwDisplay = document.getElementById('fw-display');
+    var statusDot = document.getElementById('status-dot');
+    var sysStatus = document.getElementById('sys-status');
+    if (fwDisplay) {
+        if (isPS4) {
+            fwDisplay.textContent = "PS4 FW " + fwVersion;
+            if (statusDot) statusDot.style.backgroundColor = "#00f076";
+            if (sysStatus) sysStatus.textContent = "PS4 Connected";
+        } else {
+            fwDisplay.textContent = "PC / Browser Mode";
+            if (statusDot) statusDot.style.backgroundColor = "#00a2ff";
+            if (sysStatus) sysStatus.textContent = "PC Preview";
+        }
+    }
+}
+
+// Watch msgs changes to adapt status icon
+function checkStatusChanges() {
+    var msgsEl = document.getElementById('msgs');
+    var statusIcon = document.getElementById('status-icon');
+    var spinner = document.getElementById('spinner-outer');
+    if (!msgsEl || !window.MutationObserver) return;
+    
+    var observer = new MutationObserver(function() {
+        var text = msgsEl.innerText || msgsEl.textContent || "";
+        if (text.indexOf("Loaded") !== -1 || text.indexOf("Successfully") !== -1) {
+            if (statusIcon) {
+                statusIcon.innerHTML = "&#10004;";
+                statusIcon.style.color = "#00f076";
+                statusIcon.style.textShadow = "0 0 14px #00f076";
+            }
+            if (spinner) {
+                spinner.style.borderTopColor = "#00f076";
+                spinner.style.borderBottomColor = "#00f076";
+                spinner.style.animationDuration = "3s";
+            }
+        } else if (text.indexOf("Failed") !== -1 || text.indexOf("Error") !== -1 || text.indexOf("Unsupported") !== -1) {
+            if (statusIcon) {
+                statusIcon.innerHTML = "&#9888;";
+                statusIcon.style.color = "#ff3860";
+                statusIcon.style.textShadow = "0 0 14px #ff3860";
+            }
+            if (spinner) {
+                spinner.style.borderTopColor = "#ff3860";
+                spinner.style.borderBottomColor = "#ff3860";
+            }
+        }
+    });
+    observer.observe(msgsEl, { childList: true, characterData: true, subtree: true });
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    updateConsoleUI();
+    checkStatusChanges();
+});
+
+function onScriptError() {
+    msgs.innerHTML = "Content not Found! - Clear Browser Data and Re-Install Cache ...";
+}
+
+if (!isPS4) {
+    document.addEventListener("DOMContentLoaded", () => {
+        msgs.innerHTML = "Only for PS4 with Firmware 7.00 to 13.00";
+    });
+} else {
+    if (window.applicationCache.status == '0') {
+        if (fwNum >= 7.00 && fwNum <= 8.52) {
+            window.location.replace("cache700.html");
+        } else if (fwNum >= 9.00 && fwNum <= 9.60) {
+            window.location.replace("cache900.html");
+        } else if (fwNum >= 10.00 && fwNum <= 11.02) {
+            window.location.replace("cachecss.html");
+        } else if (fwNum >= 11.50 && fwNum <= 13.00) {
+            window.location.replace("cacheslopkit.html");
+        } else {
+            document.addEventListener("DOMContentLoaded", () => {
+                msgs.innerHTML = 'Unsupported Firmware: <span style="color: #ff3860;">' + fwVersion + '</span>';
+            });
+        }
+    } else {
+        if (fwNum >= 7.00 && fwNum <= 8.52) {
+            var script = document.createElement('script');
+            script.type = 'module';
+            script.src = "700/alert.js";
+            script.onerror = onScriptError;
+            document.head.appendChild(script);
+        }
+        else if (fwNum >= 9.00 && fwNum <= 9.60) {
+            var script = document.createElement('script');
+            script.type = 'module';
+            script.src = "900/alert.js";
+            script.onerror = onScriptError;
+            document.head.appendChild(script);
+        }
+        else if (fwNum >= 10.00 && fwNum <= 11.02) {
+            var script = document.createElement('script');
+            script.src = "css/main.js";
+            script.onerror = onScriptError;
+            script.onload = function () {
+                setTimeout(function () {
+                    doJb();
+                }, 500);
+            };
+            document.head.appendChild(script);
+        }
+        else if (fwNum >= 11.50 && fwNum <= 12.02) {
+            var script = document.createElement('script');
+            script.type = 'module';
+            script.src = "slopkit/chain_lapse.js";
+            script.onerror = onScriptError;
+            document.head.appendChild(script);
+        }
+        else if (fwNum >= 12.50 && fwNum <= 13.00) {
+            var script = document.createElement('script');
+            script.type = 'module';
+            script.src = "slopkit/chain_poops.js";
+            script.onerror = onScriptError;
+            document.head.appendChild(script);
+        }
+    }
+}
+</script>
+</body>
+</html>
